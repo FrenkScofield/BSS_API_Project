@@ -1,0 +1,81 @@
+﻿@model BSS_Shopping.Domain.Entities.Category
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12 my-4">
+        <div class="card shadow my-4">
+            <div class="card-header py-4">
+                Add Category <a asp-action="Index" class="float-right btn btn-outline-secondary">Back to Index</a>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+
+                           
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input type="text" id="name" asp-for="Name" class="form-control" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Description</label>
+                                <textarea id="description" asp-for="Description" class="form-control" style="height: 140px;"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                          
+
+                            <div class="form-group">
+                                <label class="control-label">Date </label>
+                                <input type="date" id="datetimepicker" asp-for="CreateDate" value="2021-04-08" class="form-control" />
+                                <span class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add" id="btnAddModels" class="btn btn-success name" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(document).on("change", ".select-category", function () {
+            //let categoryName
+            $("#categoryNameHidden").val($(this).val());
+        })
+    </script>
+
+
+    <script>
+        $('#datetimepicker').datetimepicker({
+
+            language: 'en-US',
+            format: 'dd-MM-yyyy'
+
+        });
+    </script>
+
+
+
+
+
+}
+
+
